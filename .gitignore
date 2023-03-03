@@ -1,0 +1,5 @@
+venv/
+m5stack/libraries/
+titanic/data
+titanic/submit
+illumi-packet/

@@ -1,0 +1,5 @@
+{
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.poetryPath": "C:\\Users\\ryota\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+}
