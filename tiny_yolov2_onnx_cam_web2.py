@@ -301,3 +301,17 @@ def index():
     IMG_NAME = "imout.jpg"
     cv2.imwrite("/static/imout.jpg",main.globalimg)
     return render_template('index.html')
+
+def gen_frames():
+    while True:
+        #フレームデータをjpgに圧縮
+        ret, buffer = cv2.imencode('.jpg',glovalimg)
+        # bytesデータ化
+        frame = buffer.tobytes()
+        yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+@app.route('/video_feed')
+def video_feed():
+   #imgタグに埋め込まれるResponseオブジェクトを返す
+   return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
